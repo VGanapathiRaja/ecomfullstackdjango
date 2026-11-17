@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #336ef3;
+    --secondary-color: #474747;
+    --tersary-color: #f7f8f9;
+}
+
+.menubar {
+    padding: 10px 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(243, 245, 245);
+}
+
+.menubar img {
+    width: 100px;
+    padding: 10px;
+}
+
+.menubar .menus ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px;
+}
+
+.menubar li:hover {
+    background-color: rgb(168, 164, 160);
+    transition: all .5 ease-in-out;
+}
+
+.menubar a {
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 18px;
+}
+
+.menubar a:hover {
+    color: blue
+}

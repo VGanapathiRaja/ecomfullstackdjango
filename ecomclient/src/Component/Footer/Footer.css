@@ -1,0 +1,16 @@
+footer {
+    padding: 60px 60px;
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a {
+    color: blueviolet;
+    text-decoration: none;
+}
+
+footer:hover a {
+    color: blue;
+}
