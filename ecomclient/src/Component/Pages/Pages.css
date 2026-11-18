@@ -1,0 +1,75 @@
+   :root {
+       --primary-color: #336ef3;
+       --secondary-color: #474747;
+       --tersary-color: #f7f8f9;
+   }
+
+   section {
+       padding: 60px 60px;
+   }
+
+   .regsection {
+       background-color: aliceblue;
+   }
+
+   .regsection .regiform {
+       background: beige;
+       padding: 30px 45px;
+       margin: 20px 10px;
+       width: 600px;
+       margin: auto;
+   }
+
+   .regiform h2 {
+       color: blue;
+       padding: 10px;
+       margin: 5px;
+       text-align: center;
+   }
+
+   .regiform .inputs {
+       padding: 10px;
+       margin: 5px 10px;
+   }
+
+   .regiform label {
+       color: blueviolet;
+       font-size: 18px;
+   }
+
+   .regiform input,
+   .regiform textarea {
+       padding: 10px;
+       width: 100%;
+       font-size: 17px;
+       color: #336ef3;
+       outline: none;
+       border: 1px solid #336ef3;
+   }
+
+   .regiform input::placeholder,
+   .regiform textarea::placeholder {
+       color: #336ef3;
+   }
+
+   .regiform button {
+       padding: 15px 30px;
+       margin: 10px 0px;
+       background: blueviolet;
+       color: #fff;
+       border: none;
+       border-radius: 10px;
+       width: 100%;
+       font-size: 16px;
+       outline: none;
+   }
+
+   .regiform .inputs:hover button {
+       background-color: #336ef3;
+       transition: all .6s ease-in-out;
+   }
+
+   .regiform p {
+       color: red;
+       padding: 5px 0;
+   }
