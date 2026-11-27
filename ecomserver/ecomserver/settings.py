@@ -23,9 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&8wrgv%s9e1erq2zjoh=dzg-%yiu9e8=+a+t5q1*b(o16*5qh3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+import os
 
-ALLOWED_HOSTS = []
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.onrender.com'
+]
+SECRET_KEY = os.environ.get('SECRET_KEY', 'development-only-key')
 
 
 # Application definition
@@ -51,6 +58,7 @@ CORS_ALLOWED_ORIGINS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,16 +91,30 @@ WSGI_APPLICATION = 'ecomserver.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'ecom',
-        'HOST' : 'localhost',
-        'USER' : 'root',
-        'PASSWORD' : 'Root@123',
-        'PORT' : 3306
+import os
+import dj_database_url
+
+if os.environ.get('DATABASE_URL'):
+    # Production database (Render)
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL')
+        )
     }
-}
+else:
+    # Local database (SQLite)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME':  'ecom',
+            'HOST' : 'localhost',
+            'USER' : 'root',
+            'PASSWORD' : 'Root@123',
+            'PORT' : 3306
+        }
+    }
+
+
 
 
 # Password validation
@@ -131,6 +153,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
