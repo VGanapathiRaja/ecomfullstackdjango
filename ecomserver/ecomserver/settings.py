@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-&8wrgv%s9e1erq2zjoh=dzg-%yiu9e8=+a+t5q1*b(o16*5qh3
 # SECURITY WARNING: don't run with debug turned on in production!
 import os
 
+import dj_database_url
+
 DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -32,7 +34,19 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.onrender.com'
 ]
-SECRET_KEY = os.environ.get('SECRET_KEY', 'development-only-key')
+
+
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'local-development-secret-key'
+)
+
+DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+
+render_host = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+
+if render_host:
+    ALLOWED_HOSTS.append(render_host)
 
 
 # Application definition
